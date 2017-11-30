@@ -81,7 +81,7 @@ public class TestMDPParallelMinMaxRess {
 		int temps=0;
 		
 		MDP.greedyEpsilon=1;
-		while(temps<30000) {
+		while(temps<50000) {
 			itAG = agents.iterator(); 
 			while (itAG.hasNext()) {
 				Agent agent = itAG.next();

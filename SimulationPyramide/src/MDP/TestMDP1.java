@@ -57,6 +57,7 @@ public class TestMDP1 {
 		ArrayList<Etat> listeEtats=new ArrayList<Etat>();
 		
 		// for(double chargeA=0;chargeA<4;chargeA++) { Back
+		int numeroAction=0;
 		for(double tauxDispoA=0.25;tauxDispoA<=1;tauxDispoA+=0.25) {
 			for(int h=0;h<24*60;h+=uniteTemps) {
 				for(int t1=maxRess;t1>=minRess;t1--) {
@@ -74,7 +75,7 @@ public class TestMDP1 {
 									LinkedHashMap<TypeVM,Integer> natureAction=new LinkedHashMap<TypeVM,Integer>();
 									natureAction.put(type1, a);
 									natureAction.put(type2, b);
-									Action action=new Action(natureAction);
+									Action action=new Action(natureAction,numeroAction);
 									// for(double chargeP=0;chargeP<=3;chargeP++) { Back
 									for(double tauxDispoB=0.25;tauxDispoB<=1;tauxDispoB+=0.25) { 	
 					    			   if(newEtat.nbRessources.get(type1)+action.natureAction.get(type1)>=minRess && newEtat.nbRessources.get(type1)+action.natureAction.get(type1)<maxRess+1 && newEtat.nbRessources.get(type2)+action.natureAction.get(type2)>=minRess && newEtat.nbRessources.get(type2)+action.natureAction.get(type2)<maxRess+1) {
@@ -83,15 +84,16 @@ public class TestMDP1 {
 					    				   //fw.write("---"+newEtat.codeEtat+";;;;;;;;;"+chargeP+"--"+((newEtat.heureJournee+uniteTemps)%(24*60))+"--"+(newEtat.nbRessources.get(type1)+"-"+action.natureAction.get(type1))+"-"+(newEtat.nbRessources.get(type2)+"-"+action.natureAction.get(type2))+"\n");
 					    			   }
 						    		}
-									if(action.listeTransitions.size()>0)
-										newEtat.listeActions.add(new Action(natureAction));
+									if(action.listeTransitions.size()>0) {
+										newEtat.listeActions.add(new Action(natureAction,numeroAction));
+										numeroAction++;}
 								}
 							}
 							else {
 								LinkedHashMap<TypeVM,Integer> natureAction=new LinkedHashMap<TypeVM,Integer>();
 								natureAction.put(type1, a);
 								natureAction.put(type2, 0);
-								Action action=new Action(natureAction);
+								Action action=new Action(natureAction,numeroAction);
 								// for(double chargeP=0;chargeP<=3;chargeP++) { Back
 								for(double tauxDispoB=0.25;tauxDispoB<=1;tauxDispoB+=0.25) {
 				    			   if(newEtat.nbRessources.get(type1)+action.natureAction.get(type1)>=minRess && newEtat.nbRessources.get(type1)+action.natureAction.get(type1)<maxRess+1 && newEtat.nbRessources.get(type2)+action.natureAction.get(type2)>=minRess && newEtat.nbRessources.get(type2)+action.natureAction.get(type2)<maxRess) {
@@ -100,8 +102,10 @@ public class TestMDP1 {
 				    				   //fw.write("---"+newEtat.codeEtat+";;;;;;;;;"+chargeP+"--"+((newEtat.heureJournee+uniteTemps)%(24*60))+"--"+(newEtat.nbRessources.get(type1)+"-"+action.natureAction.get(type1))+"-"+(newEtat.nbRessources.get(type2)+"-"+action.natureAction.get(type2))+"\n");
 				    			   }
 					    		}
-								if(action.listeTransitions.size()>0)
-									newEtat.listeActions.add(new Action(natureAction));
+								if(action.listeTransitions.size()>0) {
+									newEtat.listeActions.add(new Action(natureAction,numeroAction));
+									numeroAction++;
+								}
 							}
 						}
 					}

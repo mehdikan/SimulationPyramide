@@ -59,10 +59,10 @@ public class Agent {
 
 		cloud.listeClassesClient.add(new ClasseClients(1));
 		
-		// fw = new FileWriter("/projets/pyramide/mkandi/resAgent"+numeroAgent+".txt");
+		 fw = new FileWriter("/projets/pyramide/mkandi/resAgent"+numeroAgent+".txt");
 	   // FileWriter fwe = new FileWriter("/projets/pyramide/mkandi/errPar"+numeroAgent+".txt");
 	    //fw = new FileWriter("resPar"+numeroAgent+".txt");
-		fw = new FileWriter("resPar"+numeroAgent+".txt");
+		//fw = new FileWriter("resPar"+numeroAgent+".txt");
 	    //FileWriter fwe = new FileWriter("errPar"+numeroAgent+".txt");
 		
 		listeEtats=new ArrayList<Etat>();

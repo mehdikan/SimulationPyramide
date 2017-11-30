@@ -51,15 +51,15 @@ public class MDP {
 		int temps=0;
 		//FileWriter fw = new FileWriter("res.txt");
 		//FileWriter fwe = new FileWriter("err.txt");
-		FileWriter fw = new FileWriter("/projets/pyramide/mkandi/resPar"+numeroMDP+".txt");
-		FileWriter fwe = new FileWriter("/projets/pyramide/mkandi/errPar"+numeroMDP+".txt");
+		FileWriter fw = new FileWriter("/projets/pyramide/mkandi/resNonPara2.txt");
+		FileWriter fwe = new FileWriter("/projets/pyramide/mkandi/errPar2.txt");
 		//FileWriter fw = new FileWriter("resPar"+numeroMDP+".txt");
 		//FileWriter fwe = new FileWriter("errPar"+numeroMDP+".txt"); 
 		//VariablesGlobales.writer_gmpt=new FileWriter("cost-time",true);
 		
 		int cptResolus=0,cptNonResolus=0,cptNull=0,cptExept=0;
 		MDP.greedyEpsilon=1;
-		while((etatFinal==null || etatEnCours!=etatFinal) && temps<100) {
+		while((etatFinal==null || etatEnCours!=etatFinal) && temps<80000) {
 	        //long total = rt.totalMemory();
 	        //long free = rt.freeMemory();
 	        
@@ -77,15 +77,15 @@ public class MDP {
 			
 	        //if(temps>30000) MDP.greedyEpsilon=0.4;
 	        
-	        //if(temps>25000) MDP.greedyEpsilon=0.5;
-	        //if(temps>50000) MDP.greedyEpsilon=0.05;
+	        if(temps>25000) MDP.greedyEpsilon=0.5;
+	        if(temps>50000) MDP.greedyEpsilon=0.05;
 	        //System.out.println("1");
-	        if(temps>20000) MDP.greedyEpsilon=0.5;
-	        if(temps>40000) MDP.greedyEpsilon=0.05;
+	        //if(temps>20000) MDP.greedyEpsilon=0.5;
+	        //if(temps>40000) MDP.greedyEpsilon=0.05;
 			
 			//System.out.println("> "+temps);
 			Etat prochainEtat;
-			Action a=etatEnCours.choisirAction();
+			Action a=etatEnCours.choisirAction(null,null);
 			//System.out.println("2");
 			// tenir compte de l'action pour le calcul du nouveau taux de surcharge
 			Set<TypeVM> cles = a.natureAction.keySet();

@@ -44,15 +44,24 @@ public class Etat {
 			Iterator<Action> it = listeActions.iterator();
 			while (!stop && it.hasNext()) {
 			   Action a = it.next();
-		       if(min==-1 || a.getQglobal(agents,agentEnCours)<=min) {
-		    	   min=a.getQglobal(agents,agentEnCours);
-		    	   choix=a;
-		       }
+			   if(agents!=null && agentEnCours!=null) {
+			       if(min==-1 || a.getQglobal(agents,agentEnCours)<=min) {
+			    	   min=a.getQglobal(agents,agentEnCours);
+			    	   choix=a;
+			       }
+			   }
+			   else {
+				   if(min==-1 || a.Q<=min) {
+			    	   min=a.Q;
+			    	   choix=a;
+			       }
+			   }
 			}
 		}
 		if(choix!=null) choix.nombreEssai++;
 		return choix;
 	}
+	
 	
 	public Action choisirActionMaxRess(ArrayList<Agent> agents,Agent agentEnCours) {
 		Action choix=null;

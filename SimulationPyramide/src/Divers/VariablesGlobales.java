@@ -43,11 +43,11 @@ public class VariablesGlobales {
 	public static double PYnonPlacees=10000;
 	public static double coefRepartition=0;
 	public static double niveauDisponiblite=1;
-	//public static double coutActivationRessource=1;
-	//public static double coutDesactivationRessource=1;
+	public static double coutActivationRessource=1;
+	public static double coutDesactivationRessource=1;
 	
-	public static double coutActivationRessource=0.0000000001;
-	public static double coutDesactivationRessource=0.0000000001;
+	//public static double coutActivationRessource=0.0000000001;
+	//public static double coutDesactivationRessource=0.0000000001;
 	
 	public static double coutRessTempo=0;
 	public static double coutActivationTempo=0;
